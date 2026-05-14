@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "devices": {
+    "samsung_tv_default": {
+      "brand": "Samsung",
+      "model": "Samsung TV (AA59-00741A starter set)",
+      "sender_channel": "D2",
+      "codes": {
+        "POWER": {"protocol": "SAMSUNG", "code": "0xE0E040BF", "bits": 32},
+        "SOURCE": {"protocol": "SAMSUNG", "code": "0xE0E0807F", "bits": 32},
+        "MUTE": {"protocol": "SAMSUNG", "code": "0xE0E0F00F", "bits": 32},
+        "VOL_UP": {"protocol": "SAMSUNG", "code": "0xE0E0E01F", "bits": 32},
+        "VOL_DOWN": {"protocol": "SAMSUNG", "code": "0xE0E0D02F", "bits": 32},
+        "CH_UP": {"protocol": "SAMSUNG", "code": "0xE0E048B7", "bits": 32},
+        "CH_DOWN": {"protocol": "SAMSUNG", "code": "0xE0E008F7", "bits": 32},
+        "MENU": {"protocol": "SAMSUNG", "code": "0xE0E058A7", "bits": 32},
+        "UP": {"protocol": "SAMSUNG", "code": "0xE0E006F9", "bits": 32},
+        "LEFT": {"protocol": "SAMSUNG", "code": "0xE0E0A659", "bits": 32},
+        "RIGHT": {"protocol": "SAMSUNG", "code": "0xE0E046B9", "bits": 32},
+        "DOWN": {"protocol": "SAMSUNG", "code": "0xE0E08679", "bits": 32},
+        "ENTER": {"protocol": "SAMSUNG", "code": "0xE0E016E9", "bits": 32},
+        "RETURN": {"protocol": "SAMSUNG", "code": "0xE0E01AE5", "bits": 32},
+        "EXIT": {"protocol": "SAMSUNG", "code": "0xE0E0B44B", "bits": 32},
+        "HOME": {"protocol": "SAMSUNG", "code": "0xE0E09E61", "bits": 32}
+      }
+    }
+  }
+}

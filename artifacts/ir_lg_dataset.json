@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "devices": {
+    "lg_tv_default": {
+      "brand": "LG",
+      "model": "LG TV (AKB74475481 starter set)",
+      "sender_channel": "D2",
+      "codes": {
+        "POWER": {"protocol": "NEC", "code": "0x20DF10EF", "bits": 32},
+        "SOURCE": {"protocol": "NEC", "code": "0x20DFD02F", "bits": 32},
+        "MUTE": {"protocol": "NEC", "code": "0x20DF906F", "bits": 32},
+        "VOL_UP": {"protocol": "NEC", "code": "0x20DF40BF", "bits": 32},
+        "VOL_DOWN": {"protocol": "NEC", "code": "0x20DFC03F", "bits": 32},
+        "CH_UP": {"protocol": "NEC", "code": "0x20DF00FF", "bits": 32},
+        "CH_DOWN": {"protocol": "NEC", "code": "0x20DF807F", "bits": 32},
+        "MENU": {"protocol": "NEC", "code": "0x20DFC23D", "bits": 32},
+        "HOME": {"protocol": "NEC", "code": "0x20DF3EC1", "bits": 32},
+        "UP": {"protocol": "NEC", "code": "0x20DF02FD", "bits": 32},
+        "DOWN": {"protocol": "NEC", "code": "0x20DF827D", "bits": 32},
+        "LEFT": {"protocol": "NEC", "code": "0x20DFE01F", "bits": 32},
+        "RIGHT": {"protocol": "NEC", "code": "0x20DF609F", "bits": 32},
+        "ENTER": {"protocol": "NEC", "code": "0x20DF22DD", "bits": 32},
+        "RETURN": {"protocol": "NEC", "code": "0x20DF14EB", "bits": 32},
+        "EXIT": {"protocol": "NEC", "code": "0x20DFDA25", "bits": 32}
+      }
+    }
+  }
+}

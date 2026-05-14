@@ -1,0 +1,44 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Local configuration and secrets
+.env
+.env.*
+*.local
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Logs and runtime output
+*.log
+logs/
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated media captures
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
+*.mp3
+*.jpg
+*.jpeg
+*.png

@@ -9,6 +9,8 @@ audio and serial IR control for TV navigation.
 - Optional microphone and speaker audio.
 - Gemini Live system instructions for TV control workflows.
 - Optional NodeMCU serial IR sender support.
+- Brightness and contrast enhancement for clearer TV UI/icons.
+- Built-in web preview stream for Raspberry Pi deployments.
 - Starter Samsung and LG IR datasets in `artifacts/`.
 
 ## Requirements
@@ -49,6 +51,41 @@ Run without video:
 python main.py --mode none --audio on
 ```
 
+## Visual Brightness
+
+The app brightens preview frames by default so TV icons and dark menus are easier
+to see. Tune it with:
+
+```bash
+python main.py --mode camera --audio on --visual-brightness 1.4 --visual-contrast 1.2
+```
+
+Use lower values if the image looks washed out:
+
+```bash
+python main.py --mode camera --audio on --visual-brightness 1.0 --visual-contrast 1.0
+```
+
+## Web Stream
+
+For Raspberry Pi deployment, enable the built-in web page:
+
+```bash
+python main.py --mode camera --audio off --local-preview off --web-stream --web-host 0.0.0.0 --web-port 8080
+```
+
+Open this from another device on the same network:
+
+```text
+http://<raspberry-pi-ip>:8080
+```
+
+The stream endpoint is also available directly at:
+
+```text
+http://<raspberry-pi-ip>:8080/stream.mjpg
+```
+
 ## IR Control
 
 By default, IR commands are planned but not sent. To send commands to a connected
@@ -58,6 +95,8 @@ NodeMCU IR blaster, pass `--execute-ir` and provide the serial port:
 python main.py \
   --mode camera \
   --audio on \
+  --local-preview off \
+  --web-stream \
   --execute-ir \
   --ir-serial-port /dev/ttyUSB0 \
   --ir-device-id samsung_tv_default

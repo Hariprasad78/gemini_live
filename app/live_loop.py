@@ -34,7 +34,14 @@ class LiveApp:
         self.live_config = build_live_config(audio_enabled=config.audio_enabled)
         self.audio = AudioRuntime()
         self.audio_enabled = self.audio.enabled(config.audio_enabled)
-        self.preview = PreviewWindow(enabled=config.preview_enabled)
+        self.preview = PreviewWindow(
+            enabled=config.preview_enabled and config.local_preview_enabled,
+            brightness=config.visual_brightness,
+            contrast=config.visual_contrast,
+            web_enabled=config.web_stream_enabled,
+            web_host=config.web_stream_host,
+            web_port=config.web_stream_port,
+        )
         self.control = LiveControlExecutor(config=config)
         self.audio_in_queue: asyncio.Queue | None = None
         self.out_queue: asyncio.Queue | None = None

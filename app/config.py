@@ -29,6 +29,12 @@ class AppConfig:
     agent_max_steps: int = 30
     agent_step_delay_seconds: float = 1.0
     agent_ui_settle_seconds: float = 1.5
+    visual_brightness: float = 1.25
+    visual_contrast: float = 1.1
+    local_preview_enabled: bool = True
+    web_stream_enabled: bool = False
+    web_stream_host: str = "0.0.0.0"
+    web_stream_port: int = 8080
 
     @property
     def preview_enabled(self) -> bool:

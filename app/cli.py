@@ -82,6 +82,42 @@ def parse_args() -> AppConfig:
         default=1.5,
         help="time in seconds to wait after an IR action before validating UI changes",
     )
+    parser.add_argument(
+        "--visual-brightness",
+        type=float,
+        default=1.25,
+        help="preview and live-frame brightness multiplier",
+    )
+    parser.add_argument(
+        "--visual-contrast",
+        type=float,
+        default=1.1,
+        help="preview and live-frame contrast multiplier",
+    )
+    parser.add_argument(
+        "--local-preview",
+        type=str,
+        default="on",
+        choices=["on", "off"],
+        help="show the local OpenCV preview window",
+    )
+    parser.add_argument(
+        "--web-stream",
+        action="store_true",
+        help="serve a Raspberry Pi friendly web page with the live preview stream",
+    )
+    parser.add_argument(
+        "--web-host",
+        type=str,
+        default="0.0.0.0",
+        help="host/interface for the web stream server",
+    )
+    parser.add_argument(
+        "--web-port",
+        type=int,
+        default=8080,
+        help="port for the web stream server",
+    )
     args = parser.parse_args()
     return AppConfig(
         video_mode=args.mode,
@@ -96,4 +132,10 @@ def parse_args() -> AppConfig:
         agent_max_steps=max(1, args.agent_max_steps),
         agent_step_delay_seconds=max(0.0, args.agent_step_delay),
         agent_ui_settle_seconds=max(0.0, args.agent_ui_settle),
+        visual_brightness=max(0.1, args.visual_brightness),
+        visual_contrast=max(0.1, args.visual_contrast),
+        local_preview_enabled=args.local_preview == "on",
+        web_stream_enabled=args.web_stream,
+        web_stream_host=args.web_host,
+        web_stream_port=max(1, min(65535, args.web_port)),
     )

@@ -53,8 +53,7 @@ python main.py --mode none --audio on
 
 ## Visual Brightness
 
-The app brightens preview frames by default so TV icons and dark menus are easier
-to see. Tune it with:
+The app uses neutral preview brightness by default. Tune it with:
 
 ```bash
 python main.py --mode camera --audio on --visual-brightness 1.4 --visual-contrast 1.2
@@ -63,7 +62,7 @@ python main.py --mode camera --audio on --visual-brightness 1.4 --visual-contras
 Use lower values if the image looks washed out:
 
 ```bash
-python main.py --mode camera --audio on --visual-brightness 1.0 --visual-contrast 1.0
+python main.py --mode camera --audio on --visual-brightness 0.75 --visual-contrast 0.95
 ```
 
 ## Web Stream
@@ -71,7 +70,7 @@ python main.py --mode camera --audio on --visual-brightness 1.0 --visual-contras
 For Raspberry Pi deployment, enable the built-in web page:
 
 ```bash
-python main.py --mode camera --audio off --local-preview off --web-stream --web-host 0.0.0.0 --web-port 8080
+python main.py --mode camera --audio off --local-preview off --web-stream --web-host 0.0.0.0 --web-port 8080 --video-width 1280 --video-height 720 --video-frame-max-size 1600 --video-jpeg-quality 92
 ```
 
 Open this from another device on the same network:
@@ -97,6 +96,12 @@ python main.py \
   --audio on \
   --local-preview off \
   --web-stream \
+  --visual-brightness 0.75 \
+  --visual-contrast 0.95 \
+  --video-width 1280 \
+  --video-height 720 \
+  --video-frame-max-size 1600 \
+  --video-jpeg-quality 92 \
   --execute-ir \
   --ir-serial-port /dev/ttyUSB0 \
   --ir-device-id samsung_tv_default
@@ -109,6 +114,15 @@ Useful IR options:
 - `--ir-device-id lg_tv_default`
 - `--ir-sender-channel D2`
 - `--ir-serial-baudrate 115200`
+
+During each task the agent also prints a visual device guess:
+
+```text
+[device] Samsung / Tizen confidence=0.82 evidence=home hub tiles and Samsung-style settings
+```
+
+When the visual match is confident, the IR sender can use the matching built-in
+Samsung or LG dataset automatically for that task.
 
 ## Git Push
 

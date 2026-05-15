@@ -292,6 +292,29 @@ class SerialIrTransport:
                     return {"success": False, "error": f"Serial request failed: {exc}"}
         return {"success": False, "error": "Serial request failed: unknown error"}
 
+    def probe(self) -> dict[str, Any]:
+        if not self._port:
+            return {
+                "success": False,
+                "error": "IR serial port is not configured or auto-detection found no unique /dev/ttyUSB* or /dev/ttyACM* device",
+            }
+        try:
+            import serial  # type: ignore
+        except Exception:
+            return {"success": False, "error": "pyserial is not installed"}
+
+        serial_exception_type = getattr(serial, "SerialException", Exception)
+        with self._port_lock():
+            try:
+                self._ensure_serial_unlocked(serial)
+                return {"success": True, "port": self._port, "transport": "serial"}
+            except serial_exception_type as exc:
+                self._close_serial_unlocked()
+                return {"success": False, "error": f"Serial probe failed: {exc}", "port": self._port}
+            except Exception as exc:
+                self._close_serial_unlocked()
+                return {"success": False, "error": f"Serial probe failed: {exc}", "port": self._port}
+
     def _ensure_serial_unlocked(self, serial_module: Any) -> Any:
         if self._serial_conn is not None and bool(getattr(self._serial_conn, "is_open", True)):
             return self._serial_conn
@@ -393,6 +416,9 @@ class SamsungSerialIrService:
     @property
     def port(self) -> str:
         return self._transport.port
+
+    def probe(self) -> dict[str, Any]:
+        return self._transport.probe()
 
     def normalize_key_name(self, key_name: str) -> str:
         raw = str(key_name or "").strip().upper().replace(" ", "_").replace("-", "_")
